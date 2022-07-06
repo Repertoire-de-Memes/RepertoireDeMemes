@@ -1,0 +1,26 @@
+{
+  "name": "RepertoireMemes",
+  "version": "1.0.0",
+  "description": "Un répertoire de memes",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "watch:css": "npx tailwindcss -i ./assets/css/app.scss -o ./assets/css/app.css --watch",
+    "serve": "npm run dev & npm run watch:css"
+  },
+  "dependencies": {
+    "chalk": "^4",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.3",
+    "nodemon": "^2.0.19",
+    "tailwindcss": "^3.1.4",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "repository": "https://github.com/NetherMCtv/RepertoiresDeMemes",
+  "author": "NetherMC",
+  "license": "MIT"
+}
