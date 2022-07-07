@@ -5,15 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Répertoire de memes</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
 </head>
 <body>
   <div id="app">
     <div class="container">
-      <div class="search">
-        <input type="search" class="form-control" name="q" placeholder="Rechercher un meme..." id="q" />
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom align-items-center flex">
+        <span class="d-flex row align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">Répertoire de memes</span>
+          <span class="fs-8">Un répertoire <a href="https://github.com/NetherMCtv/RepertoireDeMemes" target="_blank">open-source</a> et complet de memes téléchargeables</span>
+        </span>
+  
+        <div class="search w-25">
+          <input type="search" class="form-control" name="q" placeholder="Rechercher un meme..." id="q" />
+        </div>
+      </header>
+    </div>
+    <div class="container">
+      <h4 class="mb-2 text-center">Cliquez pour télécharger le meme</h4>
+      <div id="search-results" class="row">
+        <p class="text-center">Chargement...</p>
       </div>
-      <div id="search-results" class="row"></div>
+      <noscript><p class="text-center">JavaScript est nécessaire pour afficher la liste des memes.</p></noscript>
     </div>
   </div>
   <script src="/js/index.js"></script>
