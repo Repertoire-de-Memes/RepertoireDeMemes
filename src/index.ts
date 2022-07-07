@@ -3,29 +3,35 @@ import dotenv from 'dotenv';
 import chalk from 'chalk';
 import fs from 'fs';
 import path from 'path';
+import keywords from '../server/data/keywords.json';
+import filenames from '../server/data/filenames.json';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-fs.readdir(`${__dirname}/../pages`, (err, files) => {
-  if (err) throw err;
-
-  files.map(file => {
-    if (!file.endsWith('.html')) return;
-    let urlPath = file.replace('index', '').replace('.html', '');
-    
-    app.get('/' + urlPath, (req, res) => {
-      res.sendFile(path.resolve(`${__dirname}/../pages/${file}`), (err) => {
-        if (err) throw err;
-      });
-    });
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../server/index.html`), (err) => {
+    if (err) throw err;
   });
 });
 
-app.use('/assets', express.static(path.resolve(`${__dirname}/../assets`)));
+app.get('/api/images', (req, res) => {
+  console.log(keywords);
+  
+  res.send(
+    fs.readdirSync(path.resolve(`${__dirname}/../server/assets/images`)).map(img => ({
+      file: `/images/${img}`,
+      filename: filenames[img.replace(/.(jpg|png|gif)/g, '')] + '.jpg',
+      keywords: keywords[img.replace(/.(jpg|png|gif)/g, '')]
+    }))
+  );
+});
+
+app.use(express.static(path.resolve(`${__dirname}/../server/assets`)));
 
 app.listen(port, () => {
-  console.log(`Listening on ${chalk.bold(`http://localhost:${port}`)}`)
+  console.log(`Listening on ${chalk.bold(`http://localhost:${port}`)}`);
 });
+
