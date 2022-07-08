@@ -32,4 +32,20 @@ const setSearchResults = (query, type) => {
   });
 }
 
-setSearchResults(searchInput.value || '', 'images');
+document.querySelector('#images-tab')?.addEventListener('click', e => {
+  setSearchResults(
+    searchInput.value || '',
+    document.querySelector('button[aria-controls=images]')?.getAttribute('aria-controls')
+  );
+});
+document.querySelector('#videos-tab')?.addEventListener('click', e => {
+  setSearchResults(
+    searchInput.value || '',
+    document.querySelector('button[aria-controls=videos]')?.getAttribute('aria-controls')
+  );
+});
+
+setSearchResults(
+  searchInput.value || '',
+  document.querySelector('button[aria-controls=images]')?.getAttribute('aria-controls')
+);
