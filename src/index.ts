@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/images', (req, res) => {
-  const query = req.query.q;
+  const { q: query } = req.query;
 
   if (!query) {
     res.send(
@@ -44,7 +44,7 @@ app.get('/api/images', (req, res) => {
 });
 
 app.get('/api/videos', (req, res) => {
-  const query = req.query.q;
+  const { q: query } = req.query;
 
   if (!query) {
     res.send(
@@ -70,7 +70,7 @@ app.get('/api/videos', (req, res) => {
 });
 
 app.get('/api/download', (req, res) => {
-  const {file} = req.query;
+  const { file } = req.query;
   let type;
 
   if (!file) {
@@ -92,17 +92,16 @@ app.get('/api/download', (req, res) => {
   ));
 });
 
+app.get('/css/app.css', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../server/assets/css/app.css`));
+});
+
 app.get('/css/bootstrap.min.css', (req, res) => {
   res.sendFile(path.resolve(`${__dirname}/../node_modules/bootstrap/dist/css/bootstrap.min.css`));
 });
 
 app.get('/js/bootstrap.min.js', (req, res) => {
-  //res.setHeader('Content-Type', 'text/css');
   res.sendFile(path.resolve(`${__dirname}/../node_modules/bootstrap/dist/js/bootstrap.min.js`));
-});
-
-app.get('/css/app.css', (req, res) => {
-  res.sendFile(path.resolve(`${__dirname}/../server/assets/css/app.css`));
 });
 
 app.use(express.static(path.resolve(`${__dirname}/../server/assets`)));
