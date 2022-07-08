@@ -22,13 +22,31 @@
       </header>
     </div>
     <div class="container">
-      <h4 class="mb-2 text-center">Cliquez pour télécharger le meme</h4>
-      <div id="search-results" class="row">
-        <p class="text-center">Chargement...</p>
+      <h4 class="mb-4 text-center">Cliquez pour télécharger le meme choisi</h4>
+      <ul class="nav nav-tabs nav-fill my-2" id="tabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="images-tab" data-bs-toggle="tab" data-bs-target="#search-results--images" type="button" role="tab" aria-controls="images" aria-selected="true">Images</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="videos-tab" data-bs-toggle="tab" data-bs-target="#search-results--videos" type="button" role="tab" aria-controls="videos" aria-selected="false">Vidéos/GIFs</button>
+        </li>
+      </ul>
+      <div class="tab-content my-2" id="tabs-content">
+        <div id="search-results--images" class="tab-pane fade show active" role="tabpanel" aria-labelledby="images-tab">
+          <div class="row"><p class="text-center">Chargement...</p></div>
+        </div>
+        <div id="search-results--videos" class="tab-pane fade" role="tabpanel" aria-labelledby="videos-tab">
+          <div class="row"><p class="text-center">Chargement...</p></div>
+        </div>
       </div>
       <noscript><p class="text-center">JavaScript est nécessaire pour afficher la liste des memes.</p></noscript>
     </div>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container text-center">
+        <span class="text-muted">Site créé par <a href="https://twitter.com/NetherMC_">NetherMC</a> (me DM si vous trouvez un bug, un problème, etc) - <a href="https://github.com/NetherMCtv/RepertoireDeMemes">Code source</a></span>
+      </div>
+    </footer>
   </div>
-  <script src="/js/index.js"></script>
+  <script src="/js/index.js" type="module"></script>
 </body>
 </html>

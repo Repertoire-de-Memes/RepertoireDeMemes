@@ -1,17 +1,23 @@
+import '/js/bootstrap.min.js';
+
 const searchInput = document.querySelector('#q');
-const searchResults = document.querySelector('#search-results');
+const searchResultsImages = document.querySelector('#search-results--images > div');
+const searchResultsVideos = document.querySelector('#search-results--videos > div');
 
 searchInput?.addEventListener('input', (e) => {
-  setSearchResults(e.target.value);
+  setSearchResults(
+    e.target.value,
+    document.querySelector('button[aria-selected=true]')?.getAttribute('aria-controls')
+  );
 });
 
-const getSearchResults = (query) => {
-  return fetch(`/api/images${query && `?q=${encodeURIComponent(query)}` || ''}`).then(r => r.json());
+const getSearchResults = (query, type = 'images') => {
+  return fetch(`/api/${type}${query && `?q=${encodeURIComponent(query)}` || ''}`).then(r => r.json());
 }
 
-const setSearchResults = (query) => {
-  getSearchResults(query).then(results => {
-    searchResults.innerHTML = '';
+const setSearchResults = (query, type) => {
+  getSearchResults(query, type).then(results => {
+    (type === 'images' && searchResultsImages || searchResultsVideos).innerHTML = '';
 
     results.map(result => {
       const elem = document.createElement('div');
@@ -19,11 +25,11 @@ const setSearchResults = (query) => {
 
       elem.innerHTML = `
       <a href="${result.file}" download="${result.filename}">
-        <img src="${result.file}" class="img-fluid" />
+        <${type === 'images' && 'img' || 'video'} src="${result.file}" class="img-fluid"${type === 'images' && ' />' || '></video>'}
       </a>`;
-      searchResults?.appendChild(elem);
+      (type === 'images' && searchResultsImages || searchResultsVideos)?.appendChild(elem);
     });
   });
 }
 
-setSearchResults();
+setSearchResults(searchInput.value || '', 'images');

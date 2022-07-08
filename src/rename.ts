@@ -18,12 +18,12 @@ const rl = readline.createInterface(process.stdin, process.stdout);
 rl.question('What do you wanna rename? (1) All images (2) One specific image ', (wtr) => {
   switch (wtr) {
     case '1':
-      const imgCount = fs.readdirSync(path.resolve(`${__dirname}/../server/assets/images`)).length;
+      const imgCount = fs.readdirSync(path.resolve(`${__dirname}/../server/data/images`)).length;
 
-      fs.readdirSync(path.resolve(`${__dirname}/../server/assets/images`)).forEach(img => {
-        const old = `${__dirname}/../server/assets/images/${img}`;
+      fs.readdirSync(path.resolve(`${__dirname}/../server/data/images`)).forEach(img => {
+        const old = `${__dirname}/../server/data/images/${img}`;
         const id = makeId(20);
-        const newName = `${__dirname}/../server/assets/images/${id}.jpg`;
+        const newName = `${__dirname}/../server/data/images/${id}.jpg`;
 
         fs.renameSync(old, newName);
         console.log(`Renamed ${img} to ${id}.jpg`);
@@ -37,9 +37,9 @@ rl.question('What do you wanna rename? (1) All images (2) One specific image ', 
 
     case '2':
       rl.question('Image path: ', (imgPath) => {
-        const old = `${__dirname}/../server/assets/images/${imgPath}`;
+        const old = `${__dirname}/../server/data/images/${imgPath}`;
         const id = makeId(20);
-        const newName = `${__dirname}/../server/assets/images/${id}.jpg`;
+        const newName = `${__dirname}/../server/data/images/${id}.jpg`;
 
         fs.renameSync(old, newName);
         console.log(`Renamed ${imgPath} to ${id}.jpg`);
