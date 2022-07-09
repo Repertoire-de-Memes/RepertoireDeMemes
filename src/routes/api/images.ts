@@ -2,8 +2,9 @@ import fs from 'fs';
 import keywords from '../../../server/data/keywords.json';
 import filenames from '../../../server/data/filenames.json';
 import { IMAGES_FOLDER } from '../../variables';
+import { Request, Response } from 'express';
 
-export default (req, res) => {
+export default (req: Request, res: Response) => {
   const { q: query } = req.query;
 
   if (!query) {

@@ -1,7 +1,8 @@
 import path from 'path';
 import { IMAGES_FOLDER } from '../../variables';
+import { Request, Response } from 'express';
 
-export default (req, res) => {
+export default (req: Request, res: Response) => {
   const { file } = req.query;
 
   if (!file) {
