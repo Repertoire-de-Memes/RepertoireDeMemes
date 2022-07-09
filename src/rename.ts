@@ -15,34 +15,34 @@ const makeId = (length: number) => {
 
 const rl = readline.createInterface(process.stdin, process.stdout);
 
-rl.question('What do you wanna rename? (1) All images (2) One specific image ', (wtr) => {
+rl.question('What do you wanna rename? (1) All videos (2) One specific video ', (wtr) => {
   switch (wtr) {
     case '1':
-      const imgCount = fs.readdirSync(path.resolve(`${__dirname}/../server/data/images`)).length;
+      const imgCount = fs.readdirSync(path.resolve(`${__dirname}/../server/data/videos`)).length;
 
-      fs.readdirSync(path.resolve(`${__dirname}/../server/data/images`)).forEach(img => {
-        const old = `${__dirname}/../server/data/images/${img}`;
+      fs.readdirSync(path.resolve(`${__dirname}/../server/data/videos`)).forEach(img => {
+        const old = `${__dirname}/../server/data/videos/${img}`;
         const id = makeId(20);
-        const newName = `${__dirname}/../server/data/images/${id}.jpg`;
+        const newName = `${__dirname}/../server/data/videos/${id}.mp4`;
 
         fs.renameSync(old, newName);
-        console.log(`Renamed ${img} to ${id}.jpg`);
+        console.log(`Renamed ${img} to ${id}.mp4`);
       });
 
-      console.log(`Renamed ${imgCount} images`);
+      console.log(`Renamed ${imgCount} videos`);
 
       rl.close();
 
       break;
 
     case '2':
-      rl.question('Image path: ', (imgPath) => {
-        const old = `${__dirname}/../server/data/images/${imgPath}`;
+      rl.question('Video path: ', (imgPath) => {
+        const old = `${__dirname}/../server/data/videos/${imgPath}`;
         const id = makeId(20);
-        const newName = `${__dirname}/../server/data/images/${id}.jpg`;
+        const newName = `${__dirname}/../server/data/videos/${id}.mp4`;
 
         fs.renameSync(old, newName);
-        console.log(`Renamed ${imgPath} to ${id}.jpg`);
+        console.log(`Renamed ${imgPath} to ${id}.mp4`);
 
         rl.close();
       });
