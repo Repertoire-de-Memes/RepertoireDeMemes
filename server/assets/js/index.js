@@ -23,10 +23,20 @@ const setSearchResults = (query, type) => {
       const elem = document.createElement('div');
       elem.classList.add('col-3', 'my-1', 'align-items-center', 'd-flex');
 
+      let elemHtml = '';
+      if (type === 'images') {
+        elemHtml = `<img src="${result.file}" class="img-fluid" />`;
+      } else {
+        elemHtml =
+        `<video class="img-fluid" muted>
+          <source src="${result.file}" type="video/mp4" />
+        </video>`;
+      }
+
       elem.innerHTML = `
-      <a href="${result.file}" download="${result.filename}">
-        <${type === 'images' && 'img' || 'video'} src="${result.file}" class="img-fluid"${type === 'images' && ' />' || '></video>'}
-      </a>`;
+      <a href="${result.file}" download="${result.filename}" class="d-flex justify-content-center w-100">
+        ${elemHtml}
+      </a>${type === 'videos' && '<a class="video-overlay"></a>' || ''}`;
       (type === 'images' && searchResultsImages || searchResultsVideos)?.appendChild(elem);
     });
   });
