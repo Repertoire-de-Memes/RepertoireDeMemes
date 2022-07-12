@@ -29,6 +29,14 @@ app.get('/js/bootstrap.min.js', (req, res) => {
   res.sendFile(path.resolve(`${__dirname}/../node_modules/bootstrap/dist/js/bootstrap.min.js`));
 });
 
+app.get('/robots.txt', (req, res) => {
+  res.send(
+`User-agent: *
+Disallow: /js*
+Disallow: /css*`
+  );
+});
+
 app.use(express.static(ASSETS_FOLDER));
 
 app.listen(port, () => {
