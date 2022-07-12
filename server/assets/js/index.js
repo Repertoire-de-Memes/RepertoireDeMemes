@@ -21,22 +21,22 @@ const setSearchResults = (query, type) => {
 
     results.map(result => {
       const elem = document.createElement('div');
-      elem.classList.add('col-3', 'my-1', 'align-items-center', 'd-flex');
+      elem.classList.add('col-3', 'my-1', 'align-items-center', 'd-flex', 'row');
 
       let elemHtml = '';
       if (type === 'images') {
         elemHtml = `<img src="${result.file}" class="img-fluid" />`;
       } else {
         elemHtml =
-        `<video class="img-fluid" muted>
+        `<video class="img-fluid h-100" controls>
           <source src="${result.file}" type="video/mp4" />
         </video>`;
       }
 
       elem.innerHTML = `
-      <a href="${result.file}" download="${result.filename}" class="d-flex justify-content-center w-100">
+      <a ${type === 'images' && `href="${result.file}" download="${result.filename}"` || ''} class="d-flex justify-content-center w-100">
         ${elemHtml}
-      </a>${type === 'videos' && '<a class="video-overlay"></a>' || ''}`;
+      </a>${type === 'videos' && `<a href="${result.file}" download="${result.filename}" class="text-center">Télécharger la vidéo</a>` || ''}`;
       (type === 'images' && searchResultsImages || searchResultsVideos)?.appendChild(elem);
     });
   });
