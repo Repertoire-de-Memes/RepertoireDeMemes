@@ -1,5 +1,7 @@
 # Répertoire de memes
 
+## [https://github.com/Repertoire-de-Memes/MemesSubmissions/issues/new?assignees=NetherMCtv&labels=addition&template=ADD.yml&title=Ajout+%3A+](Ajouter un meme)
+
 ## À faire (Todo)
 
 * Un script pour réorganiser les [mots-clés](server/data/keywords.json) et les [noms de fichiers](server/data/filenames.json) dans l'ordre alphabétique
