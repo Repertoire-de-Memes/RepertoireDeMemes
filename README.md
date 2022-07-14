@@ -1,6 +1,6 @@
 # Répertoire de memes
 
-## [https://github.com/Repertoire-de-Memes/MemesSubmissions/issues/new?assignees=NetherMCtv&labels=addition&template=ADD.yml&title=Ajout+%3A+](Ajouter un meme)
+## (Ajouter un meme)[https://github.com/Repertoire-de-Memes/MemesSubmissions/issues/new?assignees=NetherMCtv&labels=addition&template=ADD.yml&title=Ajout+%3A+]
 
 ## À faire (Todo)
 
